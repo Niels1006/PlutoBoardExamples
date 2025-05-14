@@ -1,0 +1,15 @@
+name = "JuliaCon"
+uuid = "9713e9e0-b15a-4088-b358-f63b2eae78fc"
+authors = ["Niels1006 <hermsen.niels@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
+Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
+PlutoBoard = "447e6095-edb7-4c27-ab1f-4a324c08f539"
+WGLMakie = "276b4fcb-3e11-5398-bf8b-a0c2d153d008"
+
+[compat]
+CairoMakie = "0.13.4"
+Distributions = "0.25.119"
+WGLMakie = "0.11.4"
