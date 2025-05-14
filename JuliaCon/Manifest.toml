@@ -2,7 +2,7 @@
 
 julia_version = "1.11.3"
 manifest_format = "2.0"
-project_hash = "c54f6a0f7cd14dd90f3913538a29804192163f2e"
+project_hash = "f4ec11110eca86cef6d37fa1436994a4af9999e4"
 
 [[deps.AbstractFFTs]]
 deps = ["LinearAlgebra"]
@@ -1091,7 +1091,9 @@ version = "0.20.6"
 
 [[deps.PlutoBoard]]
 deps = ["FileWatching", "HTTP", "HypertextLiteral", "JSON", "MacroTools", "Pkg", "Pluto", "TOML", "UUIDs"]
-path = "../../PlutoBoard.jl"
+git-tree-sha1 = "83ffa52d0a6e8a94fc835537168a8c7b3e6b30fd"
+repo-rev = "hot-reload"
+repo-url = "https://github.com/UniStuttgart-IKR/PlutoBoard.jl"
 uuid = "447e6095-edb7-4c27-ab1f-4a324c08f539"
 version = "0.1.2"
 
