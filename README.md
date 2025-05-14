@@ -8,6 +8,8 @@ Example of PlutoBoard using Vite + Vue
 
 `julia --project`
 
+`instantiate`
+
 `using PlutoBoard; PlutoBoard.run(true)`
 
 Make sure the ports `1234`, `8080` and `8085` are unused.
