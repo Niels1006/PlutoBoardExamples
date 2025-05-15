@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {Home, Bell, LayoutPanelLeft, Settings} from "lucide-vue-next"
+import {Home, Bell, LayoutPanelLeft} from "lucide-vue-next"
 import {
   Sidebar,
   SidebarContent,
@@ -34,11 +34,11 @@ const items = [
   //   url: "#",
   //   icon: Workflow,
   // },
-  {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
-  },
+  // {
+  //   title: "Settings",
+  //   url: "#",
+  //   icon: Settings,
+  // },
 ];
 
 

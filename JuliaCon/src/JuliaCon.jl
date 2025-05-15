@@ -26,7 +26,7 @@ function get_2d_samples(n_samples::Int, mean_x::Real=0.0, mean_y::Real=0.0, var_
 
     JuliaCon.first_sample = samples[1]
     JuliaCon.last_sample = samples[end]
-    JuliaCon.samples_len = length(samples)
+    JuliaCon.samples_len = length(JuliaCon.samples)
     return JuliaCon.samples
 end
 
