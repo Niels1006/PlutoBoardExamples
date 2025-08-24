@@ -1,0 +1,166 @@
+name: Update PlutoBoardExamples Package in All Projects
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  update-package:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup Julia
+      uses: julia-actions/setup-julia@v1
+      with:
+        version: '1.11'
+        
+    - name: Change to Bare directory
+      run: cd Bare
+      
+    - name: Activate Bare project and update package
+      run: |
+        cd Bare
+        julia --project=. -e '
+          using Pkg
+          println("Activating project in Bare directory...")
+          Pkg.activate(".")
+          
+          println("Current project status:")
+          Pkg.status()
+          
+          println("Removing PlutoBoardExamples and PlutoBoard package...")
+          try
+            Pkg.rm("PlutoBoardExamples")
+            Pkg.rm("PlutoBoard")
+            println("Successfully removed PlutoBoardExamples and PlutoBoard")
+          catch e
+            println("Package PlutoBoardExamples or PlutoBoard not found or already removed: ", e)
+          end
+          
+          println("Adding PlutoBoardExamples from GitHub URL...")
+          Pkg.add(url="https://github.com/UniStuttgart-IKR/PlutoBoardExamples")
+
+          println("Adding PlutoBoard from GitHub URL...")
+          Pkg.add(url="https://github.com/UniStuttgart-IKR/PlutoBoard.jl")
+
+          println("Final project status:")
+          Pkg.status()
+          
+          println("Package update completed successfully!")
+        '
+        
+    - name: Verify Bare package installation
+      run: |
+        cd Bare
+        julia --project=. -e '
+          using Pkg
+          Pkg.status()
+          println("Attempting to load PlutoBoardExamples...")
+          using PlutoBoardExamples
+          println("PlutoBoardExamples loaded successfully!")
+        '
+
+    - name: Activate JuliaCon project and update package
+      run: |
+        cd JuliaCon
+        julia --project=. -e '
+          using Pkg
+          println("Activating project in JuliaCon directory...")
+          Pkg.activate(".")
+          
+          println("Current project status:")
+          Pkg.status()
+          
+          println("Removing PlutoBoardExamples and PlutoBoard package...")
+          try
+            Pkg.rm("PlutoBoardExamples")
+            Pkg.rm("PlutoBoard")
+            println("Successfully removed PlutoBoardExamples and PlutoBoard")
+          catch e
+            println("Package PlutoBoardExamples or PlutoBoard not found or already removed: ", e)
+          end
+          
+          println("Adding PlutoBoardExamples from GitHub URL...")
+          Pkg.add(url="https://github.com/UniStuttgart-IKR/PlutoBoardExamples")
+
+          println("Adding PlutoBoard from GitHub URL...")
+          Pkg.add(url="https://github.com/UniStuttgart-IKR/PlutoBoard.jl")
+
+          println("Final project status:")
+          Pkg.status()
+          
+          println("Package update completed successfully!")
+        '
+        
+    - name: Verify JuliaCon package installation
+      run: |
+        cd JuliaCon
+        julia --project=. -e '
+          using Pkg
+          Pkg.status()
+          println("Attempting to load PlutoBoardExamples...")
+          using PlutoBoardExamples
+          println("PlutoBoardExamples loaded successfully!")
+        '
+
+    - name: Activate Simple project and update package
+      run: |
+        cd Simple
+        julia --project=. -e '
+          using Pkg
+          println("Activating project in Simple directory...")
+          Pkg.activate(".")
+          
+          println("Current project status:")
+          Pkg.status()
+          
+          println("Removing PlutoBoardExamples and PlutoBoard package...")
+          try
+            Pkg.rm("PlutoBoardExamples")
+            Pkg.rm("PlutoBoard")
+            println("Successfully removed PlutoBoardExamples and PlutoBoard")
+          catch e
+            println("Package PlutoBoardExamples or PlutoBoard not found or already removed: ", e)
+          end
+          
+          println("Adding PlutoBoardExamples from GitHub URL...")
+          Pkg.add(url="https://github.com/UniStuttgart-IKR/PlutoBoardExamples")
+
+          println("Adding PlutoBoard from GitHub URL...")
+          Pkg.add(url="https://github.com/UniStuttgart-IKR/PlutoBoard.jl")
+
+          println("Final project status:")
+          Pkg.status()
+          
+          println("Package update completed successfully!")
+        '
+        
+    - name: Verify Simple package installation
+      run: |
+        cd Simple
+        julia --project=. -e '
+          using Pkg
+          Pkg.status()
+          println("Attempting to load PlutoBoardExamples...")
+          using PlutoBoardExamples
+          println("PlutoBoardExamples loaded successfully!")
+        '
+        
+    - name: Commit and push changes
+      if: github.event_name == 'pull_request'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add Bare/Project.toml Bare/Manifest.toml JuliaCon/Project.toml JuliaCon/Manifest.toml Simple/Project.toml Simple/Manifest.toml
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "Update PlutoBoardExamples package in all projects"
+          git push
+        fi

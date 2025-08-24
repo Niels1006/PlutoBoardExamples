@@ -1,0 +1,11 @@
+name = "Simple"
+uuid = "26aed081-ac8d-44d5-881b-6a452a71c60b"
+authors = ["Niels1006 <hermsen.niels@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+PlutoBoard = "447e6095-edb7-4c27-ab1f-4a324c08f539"
+PlutoBoardExamples = "91d2b6b3-4ae6-4799-974e-80d2209419ca"
+
+[compat]
+PlutoBoardExamples = "0.1.0"
