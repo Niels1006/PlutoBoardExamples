@@ -42,13 +42,13 @@ jobs:
           catch e
             println("Package PlutoBoardExamples or PlutoBoard not found or already removed: ", e)
           end
-          
-          println("Adding PlutoBoardExamples from GitHub URL...")
-          Pkg.add(url="https://github.com/UniStuttgart-IKR/PlutoBoardExamples")
 
           println("Adding PlutoBoard from GitHub URL...")
           Pkg.add(url="https://github.com/UniStuttgart-IKR/PlutoBoard.jl")
 
+          println("Adding PlutoBoardExamples from GitHub URL...")
+          Pkg.add(url="https://github.com/UniStuttgart-IKR/PlutoBoardExamples")
+  
           println("Final project status:")
           Pkg.status()
           
@@ -86,11 +86,11 @@ jobs:
             println("Package PlutoBoardExamples or PlutoBoard not found or already removed: ", e)
           end
           
-          println("Adding PlutoBoardExamples from GitHub URL...")
-          Pkg.add(url="https://github.com/UniStuttgart-IKR/PlutoBoardExamples")
-
           println("Adding PlutoBoard from GitHub URL...")
           Pkg.add(url="https://github.com/UniStuttgart-IKR/PlutoBoard.jl")
+
+          println("Adding PlutoBoardExamples from GitHub URL...")
+          Pkg.add(url="https://github.com/UniStuttgart-IKR/PlutoBoardExamples")
 
           println("Final project status:")
           Pkg.status()
@@ -128,12 +128,11 @@ jobs:
           catch e
             println("Package PlutoBoardExamples or PlutoBoard not found or already removed: ", e)
           end
-          
-          println("Adding PlutoBoardExamples from GitHub URL...")
-          Pkg.add(url="https://github.com/UniStuttgart-IKR/PlutoBoardExamples")
-
           println("Adding PlutoBoard from GitHub URL...")
           Pkg.add(url="https://github.com/UniStuttgart-IKR/PlutoBoard.jl")
+
+          println("Adding PlutoBoardExamples from GitHub URL...")
+          Pkg.add(url="https://github.com/UniStuttgart-IKR/PlutoBoardExamples")
 
           println("Final project status:")
           Pkg.status()
